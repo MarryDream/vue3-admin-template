@@ -9,14 +9,14 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/index.vue'),
-    meta: { title: '登录' }
+    meta: { title: '登录', noAuth: true }
   },
   ...usercenterRoutes,
   {
     path: '/:catchAll(.*)',
     name: '404',
     component: () => import('@/views/404.vue'),
-    meta: { title: '404' }
+    meta: { title: '404', noAuth: true }
   }
 ]
 
