@@ -1,0 +1,17 @@
+.el-message {
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 2px;
+  &.el-message--success {
+    border: 2px solid var(--el-color-success);
+  }
+  &.el-message--info {
+    border: 2px solid var(--el-color-info);
+  }
+  &.el-message--warning {
+    border: 2px solid var(--el-color-warning);
+  }
+  &.el-message--error {
+    border: 2px solid var(--el-color-error);
+  }
+}

@@ -1,0 +1,137 @@
+.text-center {
+  text-align: center;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+.clearfix {
+  &::before,
+  &::after {
+    content: ".";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+  zoom: 1;
+}
+
+// 统一添加flex布局样式
+.flex-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
+}
+
+.flex-grow-0 {
+  min-width: 0;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.flex-grow-1 {
+  min-width: 0;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.flex-x-center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.flex-y-center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+
+.flex-xy-center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-y-bottom {
+  display: flex;
+  align-items: flex-end;
+}
+
+.h100 {
+  height: 100%;
+}
+.w100 {
+  width: 100%;
+}
+.hw100 {
+  height: 100%;
+  width: 100%;
+}
+.main-box {
+  min-height: 100%;
+  width: 100%;
+}
+.text-over {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.text-over2 {
+  display: -webkit-box;
+  text-overflow: -o-ellipsis-lastline;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+// 滚动条样式
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d8d8;
+  background-clip: padding-box;
+  min-height: 20px;
+  -webkit-border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #bbb;
+}
+.el-table--group::after,
+.el-table--border::after {
+  width: 0 !important;
+}

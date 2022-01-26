@@ -1,12 +1,12 @@
 const state = () => ({
   title: '天狼星bot'
 })
-const mutation = {}
-const action = {}
+const mutations = {}
+const actions = {}
 
 export default {
   namespaced: true,
   state,
-  mutation,
-  action
+  mutations,
+  actions
 }
