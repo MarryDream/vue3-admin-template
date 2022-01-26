@@ -4,10 +4,10 @@
 
 <script>
 export default {
-  name: 'Plugins',
+  name: 'First',
   setup() {
     return {
-      title: '插件'
+      title: '插件一'
     }
   }
 }

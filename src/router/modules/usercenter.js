@@ -26,14 +26,20 @@ const usercenterRoutes = [
     path: '/system/plugins',
     name: 'Plugins',
     component: Layout,
-    redirect: '/system/plugins/list',
+    redirect: '/system/plugins/first',
     meta: { title: '插件' },
     children: [
       {
-        path: '/system/plugins/list',
-        name: 'PluginsList',
-        component: () => import('@/views/system/plugins/index.vue'),
-        meta: { title: '插件' }
+        path: '/system/plugins/first',
+        name: 'PluginsFirst',
+        component: () => import('@/views/system/plugins/First.vue'),
+        meta: { title: '插件一' }
+      },
+      {
+        path: '/system/plugins/second',
+        name: 'PluginsSecond',
+        component: () => import('@/views/system/plugins/Second.vue'),
+        meta: { title: '插件二' }
       }
     ]
   }
