@@ -7,25 +7,21 @@ const getRequest = ['get', 'delete']
 const postRequest = ['post', 'put']
 
 function getServer(url, params, method = 'post', config = {}) {
+  const paramField = getRequest.indexOf(method) !== -1 ? 'params' : 'data'
   const serverConfig = {
     method,
-    url
-  }
-  if (getRequest.indexOf(method) !== -1) {
-    serverConfig.params = params
-  }
-  if (postRequest.indexOf(method) !== -1) {
-    serverConfig.data = params
-  }
-  return server({
-    ...serverConfig,
+    url,
+    [paramField]: params,
     ...config
-  })
+  }
+  return server(serverConfig)
 }
 
 for (const key in apis) {
   for (const api in apis[key]) {
-    ajax[api] = getServer(apis[key][api], params, (method = 'post'), config)
+    ajax[api] = (params, method = 'post', config = {}) => {
+      return getServer(apis[key][api], params, (method = 'post'), config)
+    }
   }
 }
 
