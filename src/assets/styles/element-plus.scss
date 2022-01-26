@@ -15,3 +15,18 @@
     border: 2px solid var(--el-color-error);
   }
 }
+
+.el-message-box {
+  border: none;
+  border-radius: 2px;
+  .el-message-box__header {
+    background-color: #222;
+    .el-message-box__title {
+      font-size: 14px;
+      color: #fff;
+    }
+  }
+  .el-message-box__content {
+    margin-top: 10px;
+  }
+}
