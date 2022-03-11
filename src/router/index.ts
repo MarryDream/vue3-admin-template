@@ -1,6 +1,7 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import usercenterRoutes from './modules/usercenter'
-const routes = [
+    
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/login'
@@ -22,7 +23,13 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: (to, from, savePosition) => {
+    // 在按下 后退/前进 按钮时，就会像浏览器的原生表现那样
+    if (savePosition) {
+      return savePosition
+    }
+    return {top: 0}
+  },
   routes
 })
 

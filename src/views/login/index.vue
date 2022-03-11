@@ -2,7 +2,7 @@
   <div class="login-base">
     <main>
       <header class="login-title">
-        <h3>天狼星登录</h3>
+        <h3>{{ webTitle }}登录</h3>
       </header>
       <article class="login-contain">
         <el-form v-model="formData" label-width="0">
@@ -19,24 +19,26 @@
   </div>
 </template>
 
-<script>
-import { reactive, toRefs } from '@vue/reactivity'
-import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-import { ElMessage } from 'element-plus'
+<script lang="ts">
+import {defineComponent} from "vue";
+import {reactive, toRefs} from "@vue/reactivity"
+import {useRouter} from "vue-router"
+import {useAppStore, useUserStore} from "@/store";
+import {ElMessage} from "element-plus"
 
-export default {
-  name: 'Login',
+export default defineComponent({
+  name: "Login",
   setup() {
     const router = useRouter()
-    const store = useStore()
+    const user = useUserStore()
+    const app = useAppStore()
 
-    console.log(store)
+    const webTitle = app.title
 
     const state = reactive({
       formData: {
-        username: '',
-        password: ''
+        username: "",
+        password: ""
       },
       loginLoading: false
     })
@@ -46,26 +48,24 @@ export default {
       state.loginLoading = true
       if (!state.formData.username || !state.formData.password) {
         state.loginLoading = false
-        return ElMessage.warning('用户名或密码不能为空')
+        return ElMessage.warning("用户名或密码不能为空")
       }
-      store
-        .dispatch('user/loginByPassword', state.formData)
-        .then(() => {
-          state.loginLoading = false
-          router.push('/system')
-        })
-        .catch(err => {
-          ElMessage.error(err.toString() || '登录失败')
-          state.loginLoading = false
-        })
+      user.loginByPassword(state.formData).then(() => {
+        state.loginLoading = false
+        router.push("/system")
+      }).catch(err => {
+        ElMessage.error(err.toString() || "登录失败")
+        state.loginLoading = false
+      })
     }
 
     return {
       ...toRefs(state),
+      webTitle,
       login
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -74,6 +74,7 @@ export default {
   position: relative;
   background-color: #333;
   overflow: hidden;
+
   > main {
     width: 400px;
     position: absolute;
@@ -82,17 +83,21 @@ export default {
     transform: translate(-50%, -50%);
     background-color: #fff;
     box-shadow: 0 0 3px #999;
+
     > .login-title {
       padding: 20px;
       border-bottom: 1px solid #eee;
+
       h3 {
         margin: 0;
         font-size: 16px;
         font-weight: normal;
       }
     }
+
     > .login-contain {
       padding: 30px 20px;
+
       &:deep(.el-form) {
         .el-input__inner {
           height: 42px;
@@ -100,6 +105,7 @@ export default {
           border-radius: 2px;
         }
       }
+
       .el-button {
         margin-top: 20px;
         width: 100%;

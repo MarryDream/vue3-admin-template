@@ -1,5 +1,5 @@
-// 判断文件是否为指定类型
-export const fileTypeValidate = (accept, file) => {
+/* 判断文件是否为指定类型 */
+export const fileTypeValidate = (accept: string, file: File) => {
   // 若未传递类型，直接通过
   if (!accept) return true
 
@@ -20,8 +20,8 @@ export const fileTypeValidate = (accept, file) => {
   return validateState
 }
 
-// 校验对象是否相等方法
-export function isEqualObj(a, b) {
+/* 校验对象是否相等方法 */
+export function isEqualObj(a: any, b: any) {
   // 当传入类型不是object时，抛出错误
   if (!(a instanceof Object && b instanceof Object)) {
     throw new Error('传入类型错误')
@@ -63,8 +63,8 @@ export function isEqualObj(a, b) {
 }
 
 // 验证是否为空值
-export function isNull(message) {
-  return (rule, value, callback) => {
+export function isNull(message: string) {
+  return (rule: any, value: string, callback: any) => {
     if (!value.trim()) {
       callback(new Error(message))
     } else {
@@ -73,25 +73,20 @@ export function isNull(message) {
   }
 }
 
-/**
- * @param {string} path
- * @returns {Boolean}
- */
-export function isExternal(path) {
+
+/* 验证链接 */
+export function isExternal(path: string) {
   return /^(https?:|mailto:|tel:)/.test(path)
 }
 
-/**
- * @param {string} path
- * @returns {Boolean}
- */
-export function validPhone(str) {
+/* 校验手机号 */
+export function validPhone(str: string) {
   const IS_PHONE = /^[1]([3-9])[0-9]{9}$/
   return IS_PHONE.test(str)
 }
 
-// 只允许输入字母和汉字
-export function validUserName(str) {
+/* 只允许输入字母和汉字 */
+export function validUserName(str: string) {
   const IS_USERNAME = /[^\u4e00-\u9fa5a-zA-Z]/
   if (!str) {
     return false
@@ -99,30 +94,26 @@ export function validUserName(str) {
   return !IS_USERNAME.test(str)
 }
 
-export function validPassword(str) {
+/* 密码校验 */
+export function validPassword(str: string) {
   const IS_PASSWORD = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/
   return IS_PASSWORD.test(str)
 }
-/**
- * 完整的域名校验
- */
-export function webSite(s) {
+
+/* 完整的域名校验 */
+export function webSite(str: string) {
   const web = /[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/
-  return web.test(s)
+  return web.test(str)
 }
 
-/**
- * 验证是否是邮箱
- */
-export function isEmail(str) {
+/* 验证是否是邮箱 */
+export function isEmail(str: string) {
   const email = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/
   return email.test(str)
 }
 
-/**
- * 判断字符串是否是json字符串
- */
-export function isJsonString(str) {
+/* 判断字符串是否是json字符串 */
+export function isJsonString(str: any) {
   if (typeof str === 'string') {
     try {
       const obj = JSON.parse(str)

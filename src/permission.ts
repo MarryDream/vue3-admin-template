@@ -3,7 +3,7 @@ import { getToken } from '@/utils/cookies'
 import router from '@/router'
 
 // 设置当前网站标题
-function getPageTitle(pageTitle) {
+function getPageTitle(pageTitle: string) {
   if (pageTitle) {
     return `${pageTitle} - ${settings.title}`
   }
@@ -14,7 +14,7 @@ const whiteList = ['/login']
 
 router.beforeEach((to, from, next) => {
   const hasToken = getToken()
-  document.title = getPageTitle(to.meta.title)
+  document.title = getPageTitle((to.meta.title) as string)
 
   if (hasToken && to.path === '/login') {
     return next({ path: '/system' })
