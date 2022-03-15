@@ -1,9 +1,9 @@
 <template>
   <aside>
-    <el-menu :default-active="this.$route.path" class="el-menu-demo" background-color="#333" text-color="#fff"
+    <el-menu :default-active="route.path" class="el-menu-demo" background-color="#333" text-color="#fff"
              active-text-color="#ffd04b" router>
       <header>
-        <div class="title">SAOmd</div>
+        <div class="title">管理平台</div>
         <div class="avatar-box">
           <el-image src="https://q1.qlogo.cn/g?b=qq&s=640&nk=2190758465"/>
           <p>MarryDream</p>
@@ -11,14 +11,14 @@
       </header>
       <div v-for="routes of userRoutes" :key="routes.path">
         <el-sub-menu v-if="routes.children && routes.children.length > 1"
-                     :class="{'is-active': this.$route.path === routes.path}" :index="routes.path">
-          <template #title>{{ routes.meta.title }}</template>
+                     :class="{'is-active': route.path === routes.path}" :index="routes.path">
+          <template #title>{{ routes.meta?.title }}</template>
           <el-menu-item v-for="route of routes.children" :key="route.path" :index="route.path">{{
-              route.meta.title
+              route.meta?.title
             }}
           </el-menu-item>
         </el-sub-menu>
-        <el-menu-item v-else :index="routes.path">{{ routes.meta.title }}</el-menu-item>
+        <el-menu-item v-else :index="routes.path">{{ routes.meta?.title }}</el-menu-item>
       </div>
     </el-menu>
   </aside>
@@ -28,10 +28,13 @@
 import {defineComponent} from "vue";
 import {RouteRecordRaw} from "vue-router";
 import userRoutes from "@/router/modules/usercenter";
+import {useRoute} from "vue-router";
 
 export default defineComponent({
   name: "LayoutAside",
   setup() {
+    const route = useRoute()
+
     /* 获取实际route列表 */
     function getRouteList(routes: Array<RouteRecordRaw>, children: Array<RouteRecordRaw> = []) {
       for (const route of routes) {
@@ -54,6 +57,7 @@ export default defineComponent({
     }
 
     return {
+      route,
       userRoutes: getRouteList(userRoutes)
     }
   }
