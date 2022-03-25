@@ -24,23 +24,23 @@ const usercenterRoutes: Array<RouteRecordRaw> = [
     ]
   },
   {
-    path: '/system/plugins',
-    name: 'Plugins',
+    path: '/system/pages',
+    name: 'Pages',
     component: Layout,
-    redirect: '/system/plugins/first',
-    meta: {title: '插件'},
+    redirect: '/system/pages/first',
+    meta: {title: '页面'},
     children: [
       {
-        path: '/system/plugins/first',
-        name: 'PluginsFirst',
-        component: () => import('@/views/system/plugins/First.vue'),
-        meta: {title: '插件一'}
+        path: '/system/pages/first',
+        name: 'PagesFirst',
+        component: () => import('@/views/system/pages/PageFirst.vue'),
+        meta: {title: '页面一'}
       },
       {
         path: '/system/plugins/second',
-        name: 'PluginsSecond',
-        component: () => import('@/views/system/plugins/Second.vue'),
-        meta: {title: '插件二'}
+        name: 'PagesSecond',
+        component: () => import('@/views/system/pages/PageSecond.vue'),
+        meta: {title: '页面二'}
       }
     ]
   }

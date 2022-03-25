@@ -1,3 +1,3 @@
 export default {
-  title: 'SAOmd'
+  title: "管理平台"
 }

@@ -14,7 +14,6 @@ import {useRouter} from "vue-router"
 export default defineComponent({
   name: "LayoutNavBar",
   setup() {
-    const router = useRouter()
     const user = useUserStore()
 
     function logout() {
@@ -24,7 +23,6 @@ export default defineComponent({
         type: "warning"
       }).then(() => {
         user.logout()
-        router.push("/login")
       }).catch(() => {
       })
     }
@@ -46,7 +44,7 @@ header {
   .logout-btn {
     font-size: 14px;
     color: #fff;
-    transition: background-color 0.2;
+    transition: background-color 0.2s;
 
     &:hover {
       background-color: #111;

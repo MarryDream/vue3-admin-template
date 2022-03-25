@@ -13,9 +13,7 @@
         <el-sub-menu v-if="routes.children && routes.children.length > 1"
                      :class="{'is-active': route.path === routes.path}" :index="routes.path">
           <template #title>{{ routes.meta?.title }}</template>
-          <el-menu-item v-for="route of routes.children" :key="route.path" :index="route.path">{{
-              route.meta?.title
-            }}
+          <el-menu-item v-for="route of routes.children" :key="route.path" :index="route.path">{{ route.meta?.title }}
           </el-menu-item>
         </el-sub-menu>
         <el-menu-item v-else :index="routes.path">{{ routes.meta?.title }}</el-menu-item>

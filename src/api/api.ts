@@ -3,7 +3,7 @@ export interface IApis {
 }
 
 const apis: IApis = {
-  getImageList: '/listDir'
+  apiTest: '/api/test'
 }
 
 export default apis

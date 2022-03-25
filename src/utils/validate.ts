@@ -85,13 +85,10 @@ export function validPhone(str: string) {
   return IS_PHONE.test(str)
 }
 
-/* 只允许输入字母和汉字 */
+/* 校验用户名6-14位 */
 export function validUserName(str: string) {
-  const IS_USERNAME = /[^\u4e00-\u9fa5a-zA-Z]/
-  if (!str) {
-    return false
-  }
-  return !IS_USERNAME.test(str)
+  const IS_USERNAME = /^[a-zA-Z][a-zA-Z0-9_]{5,13}$/
+  return IS_USERNAME.test(str)
 }
 
 /* 密码校验 */

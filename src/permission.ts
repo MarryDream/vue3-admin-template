@@ -1,5 +1,5 @@
 import settings from '@/settings'
-import { getToken } from '@/utils/cookies'
+import {getToken} from '@/utils/cookies'
 import router from '@/router'
 
 // 设置当前网站标题
@@ -12,12 +12,12 @@ function getPageTitle(pageTitle: string) {
 
 const whiteList = ['/login']
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const hasToken = getToken()
   document.title = getPageTitle((to.meta.title) as string)
 
   if (hasToken && to.path === '/login') {
-    return next({ path: '/system' })
+    return next({path: '/system'})
   }
   if (!hasToken && !to.meta.noAuth && whiteList.indexOf(to.path) === -1) {
     // 需要权限且不存在于白名单内的目标，添加跳转来源参数后跳转至登录页.

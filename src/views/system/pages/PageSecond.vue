@@ -6,10 +6,10 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
-  name: "First",
+  name: "PageSecond",
   setup() {
     return {
-      title: "插件一"
+      title: "页面二"
     }
   }
 })

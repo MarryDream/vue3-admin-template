@@ -1,6 +1,12 @@
-import { AxiosRequestConfig} from 'axios'
+import {AxiosRequestConfig} from 'axios'
 import server from './request'
 import apis from './api'
+
+export interface IResponse {
+  code: number
+  data: any
+  msg: string
+}
 
 type AjaxPromise = (params?: any, method?: MethodType, config?: AxiosRequestConfig) => any
 
