@@ -9,8 +9,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/login/index.vue'),
-    meta: { title: '登录', noAuth: true }
+    component: () => import('@/views/Login.vue'),
+    meta: { title: '登录', layout: "login", noAuth: true }
   },
   ...usercenterRoutes,
   {

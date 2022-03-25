@@ -1,7 +1,7 @@
-import Layout from '@/layout/index.vue'
+import Layout from '@/layout/user/index.vue'
 import {RouteRecordRaw} from "vue-router";
 
-const usercenterRoutes: Array<RouteRecordRaw> = [
+const userCenterRoutes: Array<RouteRecordRaw> = [
   {
     path: '/system',
     name: 'system',
@@ -46,4 +46,4 @@ const usercenterRoutes: Array<RouteRecordRaw> = [
   }
 ]
 
-export default usercenterRoutes
+export default userCenterRoutes
