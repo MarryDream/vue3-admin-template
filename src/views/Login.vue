@@ -9,6 +9,7 @@
   </el-form>
   <div class="btn-box">
     <el-button type="primary" v-loading="loginLoading" @click="login">登录</el-button>
+    <el-button type="primary" @click="toRegister">注册</el-button>
   </div>
 </template>
 
@@ -16,7 +17,7 @@
 import {defineComponent} from "vue";
 import {reactive, toRefs} from "@vue/reactivity"
 import {useRouter} from "vue-router"
-import {useAppStore, useUserStore} from "@/store";
+import {useUserStore} from "@/store";
 import {ElMessage} from "element-plus"
 
 export default defineComponent({
@@ -24,9 +25,7 @@ export default defineComponent({
   setup() {
     const router = useRouter()
     const user = useUserStore()
-    const app = useAppStore()
 
-    const webTitle = app.title
 
     const state = reactive({
       formData: {
@@ -52,10 +51,15 @@ export default defineComponent({
       })
     }
 
+    /* 前去注册页 */
+    function toRegister() {
+      router.push("/register")
+    }
+
     return {
       ...toRefs(state),
-      webTitle,
-      login
+      login,
+      toRegister
     }
   }
 })
